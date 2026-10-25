@@ -23,8 +23,4 @@ dependencyResolutionManagement {
 }
 
 rootProject.name = "MobileProject"
-include(":app")
-include(":note07")
-include(":todocrud_note07")
-include(":sudoku")
 include(":note08")
