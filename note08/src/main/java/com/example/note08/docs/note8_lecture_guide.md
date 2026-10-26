@@ -27,19 +27,19 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
-    id("kotlin-kapt") // Room 및 Hilt 코드 자동 생성을 위해 필수 (KSP 대안)
-    alias(libs.plugins.hilt.android) // Hilt 플러그인 적용
+    alias(libs.plugins.ksp) // KSP를 통한 코드 자동 생성기
+    alias(libs.plugins.daggerHilt) // Hilt 플러그인 적용
 }
 
 dependencies {
     // 1. Room (로컬 DB)
     implementation(libs.androidx.room.runtime)
     implementation(libs.androidx.room.ktx)
-    kapt(libs.androidx.room.compiler) // KAPT를 통한 Room 코드 생성
+    ksp(libs.androidx.room.compiler) // KSP를 통한 Room 코드 생성
 
     // 2. Hilt (의존성 주입)
     implementation(libs.hilt.android)
-    kapt(libs.hilt.android.compiler)
+    ksp(libs.hilt.android.compiler)
     implementation(libs.androidx.hilt.navigation.compose)
 
     // 3. DataStore (환경 설정 저장)

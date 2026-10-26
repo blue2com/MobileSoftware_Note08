@@ -31,23 +31,23 @@
 ## [Slide 3] 프로젝트 준비하기 (build.gradle.kts)
 가장 먼저, 오늘 사용할 Room, DataStore, Hilt 라이브러리를 추가합니다.
 
-* 최근 안드로이드 트렌드인 **Version Catalog (`libs.`)** 방식과, Room/Hilt의 자동 코드 생성을 위한 **KAPT** 플러그인을 설정합니다.
+* 최근 안드로이드 트렌드인 **Version Catalog (`libs.`)** 방식과, Room/Hilt의 자동 코드 생성을 위한 구글의 최신 **KSP** 플러그인을 설정합니다.
 
 ```kotlin
 plugins {
-    alias(libs.plugins.hilt.android) // Hilt 플러그인
-    id("kotlin-kapt")                // Room/Hilt용 코드 생성기
+    alias(libs.plugins.daggerHilt) // Hilt 플러그인
+    alias(libs.plugins.ksp)        // 최신 Room/Hilt용 코드 생성기
 }
 
 dependencies {
     // Room
     implementation(libs.androidx.room.runtime)
     implementation(libs.androidx.room.ktx)
-    kapt(libs.androidx.room.compiler)
+    ksp(libs.androidx.room.compiler)
 
     // Hilt
     implementation(libs.hilt.android)
-    kapt(libs.hilt.android.compiler)
+    ksp(libs.hilt.android.compiler)
     implementation(libs.androidx.hilt.navigation.compose)
 
     // DataStore
